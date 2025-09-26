@@ -64,14 +64,13 @@ The app also supports multiple languages via Flutter localization (`intl`).
    cd carty_app
 
 2. **Install dependencies** 
-   ```flutter pub get
+   `flutter pub get`
 
 
 3. **Add assets**
 
 Place your images inside assets/images/
-
-    Example:
+Example:
     ```assets/images/product1.png
     assets/images/product2.png
     assets/images/featured1.jpeg```
@@ -79,19 +78,19 @@ Place your images inside assets/images/
 
 3. **Ensure your pubspec.yaml includes:**
 
-    ```flutter:
+    `flutter:
     assets:
         - assets/images/
-        - assets/screenshots/```
+        - assets/screenshots/`
 
 
 4. **Run the app**
-    ```flutter run
+    `flutter run`
 
 
 5. **Localization setup**
-    To regenerate localization files after editing .arb:
-        ```flutter gen-l10n
+To regenerate localization files after editing .arb:
+        `flutter gen-l10n`
 
 
 ##  📂 Project Structure
