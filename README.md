@@ -69,11 +69,11 @@ The app also supports multiple languages via Flutter localization (`intl`).
 
 3. **Add assets**
 
-Place your images inside assets/images/
-Example:
-    ```assets/images/product1.png
-    assets/images/product2.png
-    assets/images/featured1.jpeg```
+  Place your images inside assets/images/
+  Example:
+      ```assets/images/product1.png
+      assets/images/product2.png
+      assets/images/featured1.jpeg```
 
 
 3. **Ensure your pubspec.yaml includes:**
@@ -89,11 +89,12 @@ Example:
 
 
 5. **Localization setup**
-To regenerate localization files after editing .arb:
+  To regenerate localization files after editing .arb:
         `flutter gen-l10n`
 
 
 ##  📂 Project Structure
+```
 lib/
 │── main.dart                # App entry point
 │── Welcome_screen.dart      # Welcome page with animations
