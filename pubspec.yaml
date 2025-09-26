@@ -51,8 +51,22 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - assets/images/
 
-  # The following line ensures that the Material Icons font is
+
+  fonts:
+    - family: Suwannaphum
+      fonts:
+        - asset: assets/fonts/Suwannaphum-Regular.ttf
+          # style: italic
+        # - asset: assets/fonts/Suwannaphum-Bold.ttf
+        #   style: Bold
+        # - asset: assets/fonts/Suwannaphum-Light.ttf
+        #   style: Light
+        # - asset: assets/fonts/Suwannaphum-Thin.ttf
+        #   style: Thin
+            # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
