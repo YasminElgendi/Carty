@@ -52,7 +52,7 @@ The app also supports multiple languages via Flutter localization (`intl`).
 
 | Welcome Screen | Sign-Up Screen | Sign-In Screen | Home Screen 1 | Home Screen 2 |
 |----------------|----------------|---------------|---------------|---------------|
-| ![Welcome](assets/screenshots/Screenshot_welcome_screen.png) | ![Sign Up](assets/screenshots/Screenshot_signup.png) | ![Sign In](assets/screenshots/Screenshot_signin.png) | ![Home](assets/screenshots/Screenshot_product_page1.png) | ![Home](assets/screenshots/Screenshot_product_page2.png) |
+| ![Welcome](assets/screenshots/Screenshot_welcome_screen.png) | ![Sign Up](assets/screenshots/Screenshot_Signup.png) | ![Sign In](assets/screenshots/Screenshot_signin.png) | ![Home](assets/screenshots/Screenshot_product_page1.png) | ![Home](assets/screenshots/Screenshot_product_page2.png) |
 
 ---
 
@@ -94,6 +94,7 @@ To regenerate localization files after editing .arb:
 
 
 ##  📂 Project Structure
+```
 lib/
 │── main.dart                # App entry point
 │── Welcome_screen.dart      # Welcome page with animations
