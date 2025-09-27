@@ -108,7 +108,7 @@ assets/
 │── images/                  # Product and featured images
 │── fonts/                   # App Font
 │── screenshots/             # App screenshots
-
+```
 
 ## 🚀 Future Enhancements
 
