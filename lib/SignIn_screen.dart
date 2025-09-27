@@ -73,13 +73,27 @@ class _SigninScreenState extends State<SigninScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     controller: _emailController,
-                    validator: (value) {
-                    //null in case valid, string in case false
-                      if(value!.isEmpty || !value.contains("@"))
-                      {
-                        return "Email is not valid";
-                      }
-                      return null;
+                    validator: (value) { //null in case valid, string in case false
+                       //Check if it field is empty
+                       if (value == null || value.isEmpty) {
+                          return "Email can't be empty";
+                        }
+                        // Check if contains @
+                        if (!value.contains("@")) {
+                          return "Email should contain @";
+                        }
+                        // Check if contains dot
+                        if (!value.contains(".")) {
+                          return "Email should contain a domain (e.g. .com)";
+                        }
+                        // Check if starts/ends properly
+                        if (value.startsWith("@") || value.endsWith("@")) {
+                          return "Email can't start or end with @";
+                        }
+                        if (value.startsWith(".") || value.endsWith(".")) {
+                          return "Email can't start or end with .";
+                        }
+                        return null;
                     },
                     decoration: InputDecoration(labelText: "Email"),
                   ),
