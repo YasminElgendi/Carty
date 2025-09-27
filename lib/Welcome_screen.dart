@@ -123,7 +123,7 @@ class WelcomeScreen extends StatelessWidget {
 class _AnimatedImage extends StatefulWidget {
   final Image image;
 
-  const _AnimatedImage({Key? key, required this.image}) : super(key: key);
+  const _AnimatedImage({super.key, required this.image});
 
   @override
   State<_AnimatedImage> createState() => _AnimatedImageState();
@@ -176,11 +176,11 @@ class _AnimatedButton extends StatefulWidget {
   final VoidCallback onPressed;
 
   const _AnimatedButton({
-    Key? key,
+    super.key,
     required this.label,
     required this.backgroundColor,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   State<_AnimatedButton> createState() => _AnimatedButtonState();

@@ -50,9 +50,9 @@ The app also supports multiple languages via Flutter localization (`intl`).
 
 > Add your screenshots inside `assets/screenshots/` and link them here.
 
-| Welcome Screen | Sign-Up Screen | Home Screen |
-|----------------|----------------|-------------|
-| ![Welcome](assets/screenshots/welcome.png) | ![Sign Up](assets/screenshots/signup.png) | ![Home](assets/screenshots/home.png) |
+| Welcome Screen | Sign-Up Screen | Sign-In Screen | Home Screen 1 | Home Screen 2 |
+|----------------|----------------|---------------|---------------|---------------|
+| ![Welcome](assets/screenshots/Screenshot_welcome_screen.png) | ![Sign Up](assets/screenshots/Screenshot_Signup.png) | ![Sign In](assets/screenshots/Screenshot_signin.png) | ![Home](assets/screenshots/Screenshot_product_page1.png) | ![Home](assets/screenshots/Screenshot_product_page2.png) |
 
 ---
 
@@ -108,7 +108,7 @@ assets/
 │── images/                  # Product and featured images
 │── fonts/                   # App Font
 │── screenshots/             # App screenshots
-
+```
 
 ## 🚀 Future Enhancements
 

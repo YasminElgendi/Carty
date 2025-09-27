@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ShoppingHomeScreen extends StatefulWidget {
+  const ShoppingHomeScreen({super.key});
+
   // const ShoppingHomeScreen({super.key, required String title});
 
   @override
@@ -8,9 +10,9 @@ class ShoppingHomeScreen extends StatefulWidget {
 }
 
 class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
-  int _currentPage = 0;
-  final PageController _pageController = PageController();
-  final Set<String> cart = {};
+  int _currentPage = 0; //tracks the PageView index for featured products
+  final PageController _pageController = PageController(); // control pageView
+  final Set<String> cart = {}; // to track what's in the cart state
   int _activeIndex = -1; // for product animation
   int _activeOfferIndex = -1; // for hot offer animation
 
@@ -33,6 +35,7 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
 
   ];
   
+  // Hot Offers images
   final List<String> offerImages = [
     "assets/images/offer1.png",
     "assets/images/offer2.png",
@@ -41,7 +44,7 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
     "assets/images/offer5.png",
   ];
 
-  //Hot Offers
+  //Hot Offers list 
   final List<Map<String, String>> hotOffers = [
     {
      "title": "50% Off your first Purchase",
@@ -70,7 +73,7 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
     },
   ];
 
-  //added to cart function shows snack bar
+  //added to & removed from cart functions shows message in snack bar
   void _addedToCart(String productTitle) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text("$productTitle added to your cart")),
@@ -93,7 +96,9 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
         centerTitle: true,
         
       ),
+      //scroll through the whole page vertically
       body: SingleChildScrollView(
+        // Column to arrange the 3 sections
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -111,7 +116,8 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
             ),
             SizedBox(
               height: 200,
-              child: PageView.builder(
+              // PageView to have a horizontal carousel of images
+              child: PageView.builder(  
                 controller: _pageController,
                 onPageChanged: (index) {
                   setState(() {
@@ -120,6 +126,7 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
                 },
                 itemCount: featuredProductsImages.length,
                 itemBuilder: (context, index) {
+                  // for animation when swiping
                   return AnimatedContainer(
                     duration: Duration(milliseconds: 300),
                     margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -135,7 +142,9 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
               ),
             ),
 
-            // Dots indicator
+            // Dots indicator under the carousel
+            // Active dot -> larger and purple
+            // In Active dot -> smaller and grey
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
@@ -165,9 +174,12 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
                     ),
               ),
             ),
+            //show all products in a grid of 2 columns
             GridView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              //because it is inside a SingleChildScrollView
+              shrinkWrap: true, 
+              physics: NeverScrollableScrollPhysics(), 
+
               padding: const EdgeInsets.all(8),
               itemCount: productsImages.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -181,6 +193,8 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
                 final productName = product["name"] ?? "Unnamed";
                 final inCart = cart.contains(productName);
 
+                //Tap = scales card slightly larger with shadow.
+                //Button toggles between add to cart and remove from cart icons along with message of theSnackBar.
                 return GestureDetector(
                   onTapDown: (_) {
                     setState(() => _activeIndex = index);

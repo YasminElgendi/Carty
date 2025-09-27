@@ -96,7 +96,11 @@ class _SignupScreenState extends State<SignupScreen> {
                     controller: _emailController,
                     validator: (value) {
                     //null in case valid, string in case false
-                      if(value!.isEmpty || !value.contains("@"))
+                      if(value!.isEmpty || !value.contains("@") ||
+                       !value.contains(".") ||
+                        value.startsWith("@") || value.endsWith("@") || 
+                        value.startsWith(".") || value.endsWith(".")
+                        )
                       {
                         return "Email is not valid";
                       }
