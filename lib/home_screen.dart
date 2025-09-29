@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/l10n/app_localizations.dart';
 
 class ShoppingHomeScreen extends StatefulWidget {
   const ShoppingHomeScreen({super.key});
@@ -74,15 +75,25 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
   ];
 
   //added to & removed from cart functions shows message in snack bar
-  void _addedToCart(String productTitle) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("$productTitle added to your cart")),
-    );
-  }
-  void _removedFromCart(String productTitle) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("$productTitle removed from your cart")),
-    );
+  void _addedToCart(BuildContext context, String productTitle) {
+  final l10n = AppLocalizations.of(context)!;
+
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(l10n.addedToCart(productTitle)),
+      duration: const Duration(seconds: 2),
+    ),
+  );
+}
+  void _removedFromCart(BuildContext context, String productTitle) {
+    final l10n = AppLocalizations.of(context)!;
+
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(l10n.removedFromCart(productTitle)),
+      duration: const Duration(seconds: 2),
+    ),
+  );
   }
 
 
@@ -92,7 +103,7 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text("Our Products"),
+        title: Text(AppLocalizations.of(context)!.ourProducts),
         centerTitle: true,
         
       ),
@@ -107,7 +118,7 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                "Featured Products",
+                AppLocalizations.of(context)!.featuredProducts,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Color.fromARGB(255, 114, 93, 149)
@@ -167,7 +178,7 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                "All Products",
+                AppLocalizations.of(context)!.allProducts,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Color.fromARGB(255, 114, 93, 149)
@@ -264,10 +275,10 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
                                   setState(() {
                                     if (inCart) {
                                       cart.remove(productName);
-                                      _removedFromCart(productName);
+                                      _removedFromCart(context, productName);
                                     } else {
                                       cart.add(productName);
-                                      _addedToCart(productName);
+                                      _addedToCart(context, productName);
                                     }
                                   });
                                 },
@@ -288,7 +299,7 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                "🔥 Hot Offers 🔥",
+                 "🔥${AppLocalizations.of(context)!.hotOffers}🔥",
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: const Color.fromARGB(255, 114, 93, 149),

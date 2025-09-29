@@ -1,40 +1,71 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Welcome_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  static void setLocale(BuildContext context, Locale newLocale) {
+    _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
+    state?.setLocale(newLocale);
+  }
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Locale _locale = const Locale('en');
+
+  void setLocale(Locale newLocale) {
+    setState(() {
+      _locale = newLocale;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Carty App',
+      debugShowCheckedModeBanner: false,
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ar'),
+      ],
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      locale: _locale,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         fontFamily: "Suwannaphum",
-        useMaterial3: false, // for the app bar to be the same colour seed
+        useMaterial3: false,
       ),
-      // home: MyHomePage(title: 'Carty Home Page'),
-      home: const WelcomeScreen(),
+      home: Builder(
+        builder: (context) => Scaffold(
+          body: const WelcomeScreen(),
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: const Color.fromARGB(255, 143, 118, 183),
+            onPressed: () {
+              Locale newLocale =
+                  _locale.languageCode == 'en'
+                      ? const Locale('ar')
+                      : const Locale('en');
+              setLocale(newLocale);
+            },
+            child: const Icon(Icons.language, color: Colors.white),
+          ),
+        ),
+      ),
     );
   }
 }
+

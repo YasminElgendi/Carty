@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Signin_screen.dart';
 import 'package:flutter_application_1/Signup_screen.dart';
+import 'package:flutter_application_1/l10n/app_localizations.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -11,8 +12,8 @@ class WelcomeScreen extends StatelessWidget {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          "Carty App",
+        title: Text(
+          AppLocalizations.of(context)!.appTitle ,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 26,
@@ -25,8 +26,8 @@ class WelcomeScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Welcome text
-          const Text(
-            "Welcome to Carty",
+          Text(
+            AppLocalizations.of(context)!.welcome ,
             style: TextStyle(
               fontFamily: "Suwannaphum",
               fontWeight: FontWeight.bold,
@@ -34,8 +35,8 @@ class WelcomeScreen extends StatelessWidget {
               color: Color.fromARGB(255, 114, 93, 149),
             ),
           ),
-          const Text(
-            "Your Everyday Shopping Buddy",
+          Text(
+            AppLocalizations.of(context)!.shoppingBuddy,
             style: TextStyle(
               fontFamily: "Suwannaphum",
               fontSize: 20,
@@ -71,7 +72,7 @@ class WelcomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _AnimatedButton(
-                label: "Sign Up",
+                label: AppLocalizations.of(context)!.signUp,
                 backgroundColor: const Color.fromARGB(255, 143, 118, 183),
                 onPressed: () {
                   Navigator.of(context).push(
@@ -93,7 +94,7 @@ class WelcomeScreen extends StatelessWidget {
               const SizedBox(width: 20),
 
               _AnimatedButton(
-                label: "Sign In",
+                label: AppLocalizations.of(context)!.signIn,
                 backgroundColor: const Color.fromARGB(255, 144, 142, 142),
                 onPressed: () {
                   Navigator.of(context).push(

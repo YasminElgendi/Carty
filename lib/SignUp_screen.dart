@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/home_screen.dart';
+import 'package:flutter_application_1/l10n/app_localizations.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -24,7 +25,7 @@ class _SignupScreenState extends State<SignupScreen> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Sign Up")
+        title: Text(AppLocalizations.of(context)!.signUp)
       ),
 
       body: 
@@ -49,8 +50,8 @@ class _SignupScreenState extends State<SignupScreen> {
             child: Column(
               children: [
                 const SizedBox(height: 20,),
-                const Text(
-                    "Create an Account",
+                Text(
+                    AppLocalizations.of(context)!.createAccount,
                     style: TextStyle(
                       fontFamily: "Suwannaphum",
                       fontWeight: FontWeight.bold,
@@ -59,8 +60,8 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
             
-                const Text(
-                    "Join Carty today!",
+                Text(
+                    AppLocalizations.of(context)!.joinCarty,
                     style: TextStyle(
                       fontFamily: "Suwannaphum",
                       fontSize: 20,
@@ -73,15 +74,15 @@ class _SignupScreenState extends State<SignupScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    decoration: InputDecoration(labelText: "Full Name"),
+                    decoration: InputDecoration(labelText: AppLocalizations.of(context)!.fullName),
                     controller: _nameController,
                     validator: (value) {
                     //null in case valid, string in case false
                     if (value == null || value.isEmpty) {
-                      return "Please enter your name";
+                      return AppLocalizations.of(context)!.nameEmptyError;
                     }
                     if (value[0] != value[0].toUpperCase()) {
-                      return "First letter must be uppercase";
+                      return AppLocalizations.of(context)!.nameCapitalError;
                     }
                     return null;
                     },
@@ -102,11 +103,11 @@ class _SignupScreenState extends State<SignupScreen> {
                         value.startsWith(".") || value.endsWith(".")
                         )
                       {
-                        return "Email is not valid";
+                        return AppLocalizations.of(context)!.emailInvalidError;
                       }
                       return null;
                     },
-                    decoration: InputDecoration(labelText: "Email"),
+                    decoration: InputDecoration(labelText: AppLocalizations.of(context)!.emailLabel),
                   ),
           
                 ),
@@ -117,13 +118,13 @@ class _SignupScreenState extends State<SignupScreen> {
                     validator: (value) {
                       if(value!.length < 6)
                       {
-                        return "Password should at least contain 6 characters";
+                        return AppLocalizations.of(context)!.passwordError;
                       }
                       return null;
                     },
                     obscureText: hiddenPassword,
                     decoration: InputDecoration(
-                      labelText: "Password",
+                      labelText: AppLocalizations.of(context)!.passwordLabel,
                       suffixIcon: IconButton(
                         onPressed: togglePassword,
                         icon: Icon(hiddenPassword? Icons.visibility : Icons.visibility_off)
@@ -138,13 +139,13 @@ class _SignupScreenState extends State<SignupScreen> {
                     validator: (value) {
                       if(value != _passwordController.text)
                       {
-                        return "Password should match";
+                        return AppLocalizations.of(context)!.passwordMatchError;
                       }
                       return null;
                     },
                     obscureText: hiddenPassword,
                     decoration: InputDecoration(
-                      labelText: "Confirm Password",
+                      labelText: AppLocalizations.of(context)!.confirmPasswordLabel,
                       suffixIcon: IconButton(
                         onPressed: togglePassword,
                         icon: Icon(hiddenPassword? Icons.visibility : Icons.visibility_off)
@@ -162,8 +163,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                          title: Text("Welcome onboard!"),
-                          content: Text("Account Created Successfully."),
+                          title: Text( AppLocalizations.of(context)!.welcomeOnboard),
+                          content: Text(AppLocalizations.of(context)!.accountCreated ),
                           actions: [
                             TextButton(
                               onPressed: () {
@@ -184,7 +185,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               );
                               
                               },
-                              child: Text("Close"),
+                              child: Text( AppLocalizations.of(context)!.close),
                             ),
                           ],
                         ),
@@ -201,8 +202,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                       
                     ),
-                    child: const Text(
-                      "Create Account",
+                    child: Text(
+                      AppLocalizations.of(context)!.createAccountButton,
                       style: TextStyle(
                         fontFamily: "Suwannaphum",
                         fontSize: 20,

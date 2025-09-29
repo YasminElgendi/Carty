@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/home_screen.dart';
+import 'package:flutter_application_1/l10n/app_localizations.dart';
 
 class SigninScreen extends StatefulWidget {
   const SigninScreen({super.key});
@@ -22,7 +23,7 @@ class _SigninScreenState extends State<SigninScreen> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Sign In")
+        title: Text(AppLocalizations.of(context)!.signIn)
       ),
 
       body: 
@@ -48,9 +49,9 @@ class _SigninScreenState extends State<SigninScreen> {
             child: Column(
               children: [
                 const SizedBox(height: 40,),
-                const Text(
-                    "Welcome Back!",
-                    style: TextStyle(
+                Text(
+                     AppLocalizations.of(context)!.welcomeBack,
+                    style: const TextStyle(
                       fontFamily: "Suwannaphum",
                       fontWeight: FontWeight.bold,
                       fontSize: 30,
@@ -58,8 +59,8 @@ class _SigninScreenState extends State<SigninScreen> {
                     ),
                   ),
             
-                const Text(
-                    "Sign In to Carty",
+                Text(
+                    AppLocalizations.of(context)!.signInToCarty,
                     style: TextStyle(
                       fontFamily: "Suwannaphum",
                       fontSize: 20,
@@ -76,26 +77,26 @@ class _SigninScreenState extends State<SigninScreen> {
                     validator: (value) { //null in case valid, string in case false
                        //Check if it field is empty
                        if (value == null || value.isEmpty) {
-                          return "Email can't be empty";
+                          return AppLocalizations.of(context)!.emailEmptyError;
                         }
                         // Check if contains @
                         if (!value.contains("@")) {
-                          return "Email should contain @";
+                          return AppLocalizations.of(context)!.emailAtError;
                         }
                         // Check if contains dot
                         if (!value.contains(".")) {
-                          return "Email should contain a domain (e.g. .com)";
+                          return AppLocalizations.of(context)!.emailDotError;
                         }
                         // Check if starts/ends properly
                         if (value.startsWith("@") || value.endsWith("@")) {
-                          return "Email can't start or end with @";
+                          return AppLocalizations.of(context)!.emailStartEndError;
                         }
                         if (value.startsWith(".") || value.endsWith(".")) {
-                          return "Email can't start or end with .";
+                          return AppLocalizations.of(context)!.emailStartEndError;
                         }
                         return null;
                     },
-                    decoration: InputDecoration(labelText: "Email"),
+                    decoration: InputDecoration(labelText: AppLocalizations.of(context)!.emailLabel),
                   ),
           
                 ),
@@ -106,13 +107,13 @@ class _SigninScreenState extends State<SigninScreen> {
                     validator: (value) {
                       if(value!.length < 6)
                       {
-                        return "Password should at least contain 6 characters";
+                        return AppLocalizations.of(context)!.passwordError;
                       }
                       return null;
                     },
                     obscureText: hiddenPassword,
                     decoration: InputDecoration(
-                      labelText: "Password",
+                      labelText: AppLocalizations.of(context)!.passwordLabel,
                       suffixIcon: IconButton(
                         onPressed: togglePassword,
                         icon: Icon(hiddenPassword? Icons.visibility : Icons.visibility_off)
@@ -130,8 +131,8 @@ class _SigninScreenState extends State<SigninScreen> {
                         showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                          title: Text("Welcome Back!"),
-                          content: Text("Account sign-in successfully."),
+                          title: Text(AppLocalizations.of(context)!.welcomeDialogTitle),
+                          content: Text(AppLocalizations.of(context)!.welcomeDialogContent),
                           actions: [
                             TextButton(
                               onPressed: () {
@@ -152,7 +153,7 @@ class _SigninScreenState extends State<SigninScreen> {
                               );
                               },
                               
-                              child: Text("Close"),
+                              child: Text(AppLocalizations.of(context)!.close),
                             ),
                           ],
                         ),
@@ -169,8 +170,8 @@ class _SigninScreenState extends State<SigninScreen> {
                       ),
                       
                     ),
-                    child: const Text(
-                      "Sign In",
+                    child: Text(
+                      AppLocalizations.of(context)!.signIn,
                       style: TextStyle(
                         fontFamily: "Suwannaphum",
                         fontSize: 20,
